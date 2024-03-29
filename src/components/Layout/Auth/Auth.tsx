@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 
-const Auth: React.FC<AuthProps> = ({ children }) => {
+const Auth = ({ children }: AuthProps) => {
   const router = useRouter();
 
   const dataTitleDescription = {
@@ -25,7 +25,7 @@ const Auth: React.FC<AuthProps> = ({ children }) => {
     <div className="w-screen h-screen flex">
       <div className="w-3/5 px-10 py-14 flex items-center justify-center bg-[#f7fffd] ">
         <Image
-          src="/image/imgLogin.png"
+          src={`${process.env.NEXT_PUBLIC_URL_CLOUD_FRONT_ASSETS}/images/imgLogin.svg`}
           width={770}
           height={770}
           alt="login"

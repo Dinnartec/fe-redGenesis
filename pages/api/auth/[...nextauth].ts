@@ -1,5 +1,8 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth, { NextAuthOptions, Session } from "next-auth";
+import { AdapterUser } from "next-auth/adapters";
+import { JWT } from "next-auth/jwt";
 import Credentials from "next-auth/providers/credentials";
+
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -21,10 +24,9 @@ export const authOptions: NextAuthOptions = {
             name: "Jimmy",
             email: email,
             role: "admin",
-          }; 
+          };
         }
         return null;
-
       },
     }),
   ],
@@ -35,7 +37,6 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async jwt({ token, account, user }) {
-
       if (account) {
         token.accessToken = account.access_token;
 
@@ -48,11 +49,15 @@ export const authOptions: NextAuthOptions = {
 
       return token;
     },
-    async session({ session, token, user }: any) {
-      session.accessToken = token.accessToken;
-      session.user = token.user;
-
-      return session;
+    async session({ session, token }: { session: Session; token: JWT }) {
+      return {
+        ...session,
+        user: {
+          name: token.name,
+          email: token.email,
+          image: token.picture,
+        },
+      };
     },
   },
 };

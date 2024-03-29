@@ -6,7 +6,7 @@ import Auth from "@/src/components/Layout/Auth";
 import { useAppDispatch } from "@/src/hooks/useReduxHooks";
 import { getSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-import React, { ChangeEvent, MouseEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, MouseEvent, useState } from "react";
 
 const Login = () => {
   const [inputs, setInputs] = useState<{ email?: string; password?: string }>({

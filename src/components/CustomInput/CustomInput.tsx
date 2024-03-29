@@ -1,8 +1,7 @@
 import { CustomInputProps } from "@/types/components.type";
 import { useRef, useState, KeyboardEvent } from "react";
 
-
-const CustomInput: React.FC<CustomInputProps> = ({
+const CustomInput = ({
   disabled = false,
   className = "",
   type,
@@ -18,7 +17,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
   value,
   isRequeried = false,
   labelFontSize = "14px",
-}) => {
+}: CustomInputProps) => {
   const messageError = "Este campo es obligatorio";
   const [showError, setShowError] = useState(false);
   const inputRef = useRef(null);
