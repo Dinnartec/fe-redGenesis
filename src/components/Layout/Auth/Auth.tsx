@@ -1,0 +1,69 @@
+import { AuthProps } from "@/types/components.type";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React from "react";
+
+const Auth: React.FC<AuthProps> = ({ children }) => {
+  const router = useRouter();
+
+  const dataTitleDescription = {
+    login: {
+      id: 1,
+      title: "Inicio de sesión",
+      description:
+        "Inicia sesión para acceder a tus exámenes personalizados y llevar tu aprendizaje al siguiente nivel.",
+    },
+    register: {
+      id: 2,
+      title: "Registro",
+      description:
+        "¡Únete a nosotros para convertir tus archivos PDF en exámenes personalizados! Regístrate ahora y comienza a estudiar de manera más eficiente y divertida.",
+    },
+  };
+
+  return (
+    <div className="w-screen h-screen flex">
+      <div className="w-3/5 px-10 py-14 flex items-center justify-center bg-[#f7fffd] ">
+        <Image
+          src="/image/imgLogin.png"
+          width={770}
+          height={770}
+          alt="login"
+          className="object-contain"
+          style={{ objectFit: "contain" }}
+        />
+      </div>
+      <div className="w-2/5 flex flex-col justify-center items-center">
+        <div className="w-[345px] flex flex-col">
+          <h1 className="text-3xl font-bold text-center">
+            Bienvenidos a StudyApp
+          </h1>
+          <div className="flex flex-col items-center mt-10">
+            {router.pathname === "/auth/login" ? (
+              <>
+                <h2 className="text-3xl font-bold text-secondary">
+                  {dataTitleDescription.login.title}
+                </h2>
+                <p className="text-center mt-2">
+                  {dataTitleDescription.login.description}
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 className="text-3xl font-bold text-secondary">
+                  {dataTitleDescription.register.title}
+                </h2>
+                <p className="text-center mt-2">
+                  {dataTitleDescription.register.description}
+                </p>
+              </>
+            )}
+          </div>
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Auth;

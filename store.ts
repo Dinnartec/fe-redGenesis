@@ -2,6 +2,8 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+import userReducer from "@/slices/userSlice";
+
 // Este bloque de código configura las opciones de persistencia para redux-persist.
 const persistConfig = {
   key: "red-genesis", // La clave "red-genesis" se utiliza para identificar el estado persistido en el almacenamiento.
@@ -10,7 +12,9 @@ const persistConfig = {
 };
 
 // Esta línea crea un reductor raíz combinando varios reductores en uno solo.
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  user: userReducer
+});
 
 
 // Esta línea envuelve el reductor raíz con persistReducer para que el estado pueda persistirse utilizando la configuración establecida anteriormente.
