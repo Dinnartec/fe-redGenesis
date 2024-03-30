@@ -2,14 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-body {
-  font-family: 'Lato', sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
