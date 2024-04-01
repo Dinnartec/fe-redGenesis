@@ -25,8 +25,8 @@ const CustomButton = ({
         <Image
           src={`${process.env.NEXT_PUBLIC_URL_CLOUD_FRONT_ASSETS}/images/imgLoadData.svg`}
           alt="loading"
-          width={24}
-          height={24}
+          width={16}
+          height={16}
           className="animate-spin"
         />
       )}

@@ -85,7 +85,7 @@ const Login = () => {
           <CustomButton
             label="Iniciar sesión"
             disabled={isDisabled || isLoading || isError}
-            className="w-32 h-8 rounded-md text-sm bg-secondary text-white  mt-10 disabled:bg-grayLight disabled:text-primary self-center"
+            className="w-32 h-8 rounded-md text-sm bg-secondary text-white  mt-10 disabled:bg-grayLight disabled:text-primary self-center flex justify-center items-center gap-3"
             onClick={handleSubmit}
             loading={isLoading}
           />

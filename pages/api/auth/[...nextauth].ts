@@ -15,7 +15,10 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const { email, password } = credentials as { email: string; password: string; };
+        const { email, password } = credentials as {
+          email: string;
+          password: string;
+        };
         if (email === "jimmy.dinnartec@gmail.com" && password === "123456") {
           return { id: "1", name: "Jimmy", email: email, role: "admin" };
         }
@@ -34,21 +37,26 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, account, user }) {
+      // console.log({ token, account, user });
+
       if (account) {
         token.accessToken = account.access_token;
+
         switch (account.type) {
           case "credentials":
-            token.user = user as { id: string; name: string; email: string; role: string };
+            token.user = user;
             break;
         }
       }
+
       return token;
     },
-    async session({ session, token }) {
-      const sessionData = session as SessionData;
-      sessionData.accessToken = token.accessToken as string;
-      sessionData.user = token.user as { id: string; name: string; email: string; role: string };
-      return sessionData;
+    async session({ session, token, user }: any) {
+      // console.log({ session, token, user });
+      session.accessToken = token.accessToken;
+      session.user = token.user;
+
+      return session;
     },
   },
 };
