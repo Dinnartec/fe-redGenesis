@@ -5,20 +5,21 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
     extend: {
-      color:{
+      colors:{
         "primary": "#333333",
         "secondary": "#3730A3",
         "tertiary": "#A5B4FC",
         "blue": "#80BFFF",
-        "gray-light": "F2F2F2",
+        "grayLight": "#F2F2F2",
         "black": "#1E1E1E",
         "white": "#FFFFFF",
         "gray": "#ABABAB",
         "red": "#EB5757",
-        "blue-light": "#C8E3FF",
+        "blueLight": "#C8E3FF",
         "green": "#6CE1BD",
         "orange": "#F28437",
       },
