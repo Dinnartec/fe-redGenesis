@@ -1,4 +1,4 @@
-import { User } from "@/interface/slices.interface";
+import { UserLogin } from "@/interface/slices.interface";
 import { setUserState } from "@/slices/userSlice";
 import CustomButton from "@/src/components/CustomButton/CustomButton";
 import CustomInput from "@/src/components/CustomInput";
@@ -45,7 +45,7 @@ const Login = () => {
           setIsLoading(false);
           setIsError(false);
           router.push("/myDocuments");
-          distpatch(setUserState(userSession.user as User));
+          distpatch(setUserState(userSession.user as UserLogin));
         }
       }
     } else {
@@ -54,7 +54,7 @@ const Login = () => {
   };
 
   const handleRedirectRegister = () => {
-    console.log("Redirect to register")
+    router.push("/auth/register");
   }
 
 

@@ -1,5 +1,7 @@
 import { CustomInputProps } from "@/types/components.type";
 import { useRef, useState, KeyboardEvent } from "react";
+import { urlImageCLoud } from "@/src/utils/utilsText";
+// eslint-disable-next-line @next/next/no-img-element
 
 const CustomInput = ({
   disabled = false,
@@ -17,6 +19,10 @@ const CustomInput = ({
   value,
   isRequeried = false,
   labelFontSize = "14px",
+  infoTooltip = false,
+  tooltipId,
+  tooltipContent,
+  tooltipPlacement = "right",
 }: CustomInputProps) => {
   const messageError = "Este campo es obligatorio";
   const [showError, setShowError] = useState(false);
@@ -38,9 +44,20 @@ const CustomInput = ({
     <div>
       {label && (
         <p
-          className={`font-mont text-[${labelFontSize}] text-left font-medium text-qenta-color pb-2`}
+          className={`text-[${labelFontSize}] text-left font-medium pb-2 flex gap-2 items-center`}
         >
           {label}
+          {infoTooltip && (
+            
+            <img
+              src={`${urlImageCLoud}/icons/iconInfo.svg`}
+              alt="info"
+              className="self-center w-3 h-3"
+              data-tooltip-id={tooltipId}
+              data-tooltip-content={tooltipContent}
+              data-tooltip-placement={tooltipPlacement}
+            />
+          )}
         </p>
       )}
       {type === "textarea" ? (

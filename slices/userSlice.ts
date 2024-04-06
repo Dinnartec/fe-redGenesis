@@ -1,10 +1,10 @@
 
-import { User } from "@/interface/slices.interface";
+import { UserLogin } from "@/interface/slices.interface";
 import { RootState } from "@/store";
 import { createSlice } from "@reduxjs/toolkit";
 
 
-const initialState: User = {
+const initialState: UserLogin = {
   ok: false,
   uid: "",
   name: "",
