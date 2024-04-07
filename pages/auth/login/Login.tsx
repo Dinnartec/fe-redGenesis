@@ -1,3 +1,4 @@
+import { LoginUser } from "@/interface/objetcs.interface";
 import { UserLogin } from "@/interface/slices.interface";
 import { setUserState } from "@/slices/userSlice";
 import CustomButton from "@/src/components/CustomButton/CustomButton";
@@ -9,7 +10,7 @@ import { useRouter } from "next/router";
 import React, { ChangeEvent, MouseEvent, useState } from "react";
 
 const Login = () => {
-  const [inputs, setInputs] = useState<{ email?: string; password?: string }>({
+  const [inputs, setInputs] = useState<LoginUser>({
     email: "",
     password: "",
   });
@@ -55,8 +56,7 @@ const Login = () => {
 
   const handleRedirectRegister = () => {
     router.push("/auth/register");
-  }
-
+  };
 
   return (
     <div>
@@ -89,7 +89,15 @@ const Login = () => {
             onClick={handleSubmit}
             loading={isLoading}
           />
-          <p className="text-primary text-sm self-center mt-16">¿No tiene una cuenta? <span className="text-secondary cursor-pointer" onClick={handleRedirectRegister}>Crear una cuenta</span></p>
+          <p className="text-primary text-sm self-center mt-16">
+            ¿No tiene una cuenta?{" "}
+            <span
+              className="text-secondary cursor-pointer"
+              onClick={handleRedirectRegister}
+            >
+              Crear una cuenta
+            </span>
+          </p>
         </div>
       </Auth>
     </div>
