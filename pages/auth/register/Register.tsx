@@ -1,18 +1,13 @@
+import { RegisterForm } from "@/interface/objetcs.interface";
 import CustomButton from "@/src/components/CustomButton/CustomButton";
 import CustomInput from "@/src/components/CustomInput";
 import Auth from "@/src/components/Layout/Auth";
 import { useRouter } from "next/router";
 import React, { ChangeEvent, MouseEvent, useState } from "react";
 
-interface RegisterFomr {
-  names: string;
-  surname: string;
-  email: string;
-  password: string;
-}
 
 const Register = () => {
-  const [inputs, setInputs] = useState<RegisterFomr>({
+  const [inputs, setInputs] = useState<RegisterForm>({
     names: "",
     surname: "",
     email: "",
