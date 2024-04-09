@@ -1,4 +1,4 @@
-export interface User {
+export interface UserLogin {
   ok: boolean;
   uid: string;
   name: string;

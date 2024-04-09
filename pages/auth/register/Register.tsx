@@ -1,24 +1,23 @@
-import { LoginUser } from "@/interface/objetcs.interface";
-import { UserLogin } from "@/interface/slices.interface";
-import { setUserState } from "@/slices/userSlice";
+import { RegisterForm } from "@/interface/objetcs.interface";
 import CustomButton from "@/src/components/CustomButton/CustomButton";
 import CustomInput from "@/src/components/CustomInput";
 import Auth from "@/src/components/Layout/Auth";
-import { useAppDispatch } from "@/src/hooks/useReduxHooks";
-import { getSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { ChangeEvent, MouseEvent, useState } from "react";
 
-const Login = () => {
-  const [inputs, setInputs] = useState<LoginUser>({
+
+const Register = () => {
+  const [inputs, setInputs] = useState<RegisterForm>({
+    names: "",
+    surname: "",
     email: "",
     password: "",
   });
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const distpatch = useAppDispatch();
-  const router = useRouter();
+
   const isDisabled = !inputs.email || !inputs.password;
+  const router = useRouter();
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -30,38 +29,57 @@ const Login = () => {
 
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    if (inputs.email && inputs.password) {
-      setIsLoading(true);
-      const result = await signIn("credentials", {
-        redirect: false,
-        email: inputs.email,
-        password: inputs.password,
-      });
-
-      if (result && result.error) {
-        setIsError(true);
+    setIsLoading(true);
+    setIsError(false);
+    console.log("Registrando usuario...", inputs);
+    try {
+      // const response = await fetch("http://localhost:3000/api/auth/register", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(inputs),
+      // });
+      if (true) {
+        console.log("Usuario registrado correctamente")
       } else {
-        const userSession = await getSession();
-        if (userSession) {
-          setIsLoading(false);
-          setIsError(false);
-          router.push("/myDocuments");
-          distpatch(setUserState(userSession.user as UserLogin));
-        }
+        setIsError(true);
       }
-    } else {
+    } catch (error) {
       setIsError(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleRedirectRegister = () => {
-    router.push("/auth/register");
+  const handleRedirectLogin = () => {
+    router.push("/auth/login");
   };
 
   return (
     <div>
       <Auth>
         <div className="w-full flex flex-col mt-8 ">
+          <CustomInput
+            type="text"
+            placeholder="Ingresa tus nombres"
+            label="Nombres"
+            className="w-full border border-grayLight rounded-lg p-2 mb-5"
+            isRequeried
+            name="names"
+            value={inputs.names}
+            onChange={handleChange}
+          />
+          <CustomInput
+            type="text"
+            placeholder="Ingresa tus apellidos"
+            label="Apellidos"
+            className="w-full border border-grayLight rounded-lg p-2 mb-5"
+            isRequeried
+            name="surname"
+            value={inputs.surname}
+            onChange={handleChange}
+          />
           <CustomInput
             type="email"
             placeholder="Ingresa el correo electrónico"
@@ -71,6 +89,10 @@ const Login = () => {
             name="email"
             value={inputs.email}
             onChange={handleChange}
+            infoTooltip
+            tooltipId="information-tooltip"
+            tooltipContent="Actualmente, funciona con el correo institucional de la universidad de pamplona"
+            tooltipPlacement="left"
           />
           <CustomInput
             type="password"
@@ -83,19 +105,19 @@ const Login = () => {
             onChange={handleChange}
           />
           <CustomButton
-            label="Iniciar sesión"
+            label={  isLoading ? "Registrando..." : "Registrarse"}
             disabled={isDisabled || isLoading || isError}
             className="w-32 h-8 rounded-md text-sm bg-secondary text-white  mt-10 disabled:bg-grayLight disabled:text-primary self-center flex justify-center items-center gap-3"
             onClick={handleSubmit}
             loading={isLoading}
           />
           <p className="text-primary text-sm self-center mt-16">
-            ¿No tiene una cuenta?{" "}
+            ¿Ya tienes cuenta?{" "}
             <span
               className="text-secondary cursor-pointer"
-              onClick={handleRedirectRegister}
+              onClick={handleRedirectLogin}
             >
-              Crear una cuenta
+              Inicia sesión
             </span>
           </p>
         </div>
@@ -104,4 +126,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
