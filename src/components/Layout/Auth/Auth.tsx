@@ -19,11 +19,17 @@ const Auth = ({ children }: AuthProps) => {
       description:
         "¡Únete a nosotros para convertir tus archivos PDF en exámenes personalizados! Regístrate ahora y comienza a estudiar de manera más eficiente y divertida.",
     },
+    validationOTP: {
+      id: 3,
+      title: "Validación de OTP",
+      description:
+        "Revisa tu correo electrónico, hemos enviado un código. Ingresa el código enviado a jimmyrozo29@gmail.com",
+    },
   };
 
   return (
     <div className="w-screen h-screen flex">
-      <div className="w-3/5 px-10 py-14 flex items-center justify-center bg-[#f7fffd] ">
+      <section className="w-3/5 px-10 py-14 flex items-center justify-center bg-[#f7fffd] ">
         <Image
           src={`${process.env.NEXT_PUBLIC_URL_CLOUD_FRONT_ASSETS}/images/imgLogin.svg`}
           width={770}
@@ -32,36 +38,41 @@ const Auth = ({ children }: AuthProps) => {
           className="object-contain"
           style={{ objectFit: "contain" }}
         />
-      </div>
-      <div className="w-2/5 flex flex-col justify-center items-center">
+      </section>
+      <section className="w-2/5 flex flex-col justify-center items-center">
         <div className="w-[345px] flex flex-col">
-          <h1 className="text-3xl font-bold text-center">
-            Bienvenidos a StudyApp
-          </h1>
-          <div className="flex flex-col items-center mt-10">
-            {router.pathname === "/auth/login" ? (
-              <>
-                <h2 className="text-3xl font-bold text-secondary">
-                  {dataTitleDescription.login.title}
-                </h2>
-                <p className="text-center mt-2">
-                  {dataTitleDescription.login.description}
-                </p>
-              </>
-            ) : (
-              <>
-                <h2 className="text-3xl font-bold text-secondary">
-                  {dataTitleDescription.register.title}
-                </h2>
-                <p className="text-center mt-2">
-                  {dataTitleDescription.register.description}
-                </p>
-              </>
-            )}
-          </div>
+          {router.pathname !== "/auth/otp" && (
+            <>
+              <h1 className="text-3xl font-bold text-center">
+                Bienvenidos a StudyApp
+              </h1>
+              <div className="flex flex-col items-center mt-10">
+                {router.pathname === "/auth/login" ? (
+                  <>
+                    <h2 className="text-3xl font-bold text-secondary">
+                      {dataTitleDescription.login.title}
+                    </h2>
+                    <p className="text-center mt-2">
+                      {dataTitleDescription.login.description}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <h2 className="text-3xl font-bold text-secondary">
+                      {dataTitleDescription.register.title}
+                    </h2>
+                    <p className="text-center mt-2">
+                      {dataTitleDescription.register.description}
+                    </p>
+                  </>
+                )}
+              </div>
+            </>
+          )}
+
           {children}
         </div>
-      </div>
+      </section>
     </div>
   );
 };
