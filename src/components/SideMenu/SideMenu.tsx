@@ -58,7 +58,7 @@ const SideMenu = () => {
                       alt={item.name}
                       width={16}
                       height={16}
-                      className={`${isEnabled ? "text-white" : "text-gray"}`}
+                      style={{ filter: isEnabled ? "brightness(0) invert(1)" : "none" }}
                     />
                     <p
                       className={`text-sm font-semibold ${
