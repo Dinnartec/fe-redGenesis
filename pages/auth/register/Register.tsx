@@ -41,7 +41,8 @@ const Register = () => {
       //   body: JSON.stringify(inputs),
       // });
       if (true) {
-        console.log("Usuario registrado correctamente")
+        console.log("Usuario registrado correctamente");
+        router.push("/auth/otp");
       } else {
         setIsError(true);
       }
