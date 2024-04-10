@@ -38,3 +38,15 @@ export type CustomInputProps = {
 export type AuthProps = {
   children: React.ReactNode;
 };
+
+
+export type OptionItem = {
+  id: number;
+  name: string;
+  icon: React.ReactNode;
+  handlerOption: () => void;
+}
+
+export type MenuActionsProps = {
+  options: OptionItem[];
+}
