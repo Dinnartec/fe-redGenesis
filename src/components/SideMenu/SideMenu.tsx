@@ -29,7 +29,7 @@ const SideMenu = () => {
   ];
 
   return (
-    <aside className="flex flex-col pt-20 bg-green-white w-[15.55vw] max-w-52 h-screen shadow-custom-tooltip items-center justify-between">
+    <aside className="flex flex-col pt-20 bg-green-white min-w-52 h-screen shadow-custom-tooltip items-center justify-between">
       <header className="flex flex-col items-center justify-center">
         <Image
           src={`${urlImageCLoud}/icons/iconLogo.svg`}
