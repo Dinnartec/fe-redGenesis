@@ -50,3 +50,9 @@ export type OptionItem = {
 export type MenuActionsProps = {
   options: OptionItem[];
 }
+
+
+export type HeaderPageProps = {
+  titleHeader: string;
+  breadcrumb?: string;
+};
