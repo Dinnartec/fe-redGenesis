@@ -1,12 +1,9 @@
+import DataFolderSearch from "@/src/components/DataFolderSearch";
 import HeaderPage from "@/src/components/HeaderPage";
 import Home from "@/src/components/Layout/Home";
 import MenuOptions from "@/src/components/MenuOptions";
-import { signOut } from "next-auth/react";
 
 const Documents = () => {
-  const handleLogout = async () => {
-    await signOut();
-  };
 
   return (
     <Home>
@@ -14,12 +11,7 @@ const Documents = () => {
         <HeaderPage
           titleHeader="Mis Documentos"  
         />
-        <button
-          onClick={handleLogout}
-          className="bg-secondary text-white py-4 px-6 w-auto h-auto"
-        >
-          Cerrar Sesion
-        </button>
+        <DataFolderSearch />
       </div>
 
       <MenuOptions />

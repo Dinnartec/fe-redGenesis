@@ -56,3 +56,27 @@ export type HeaderPageProps = {
   titleHeader: string;
   breadcrumb?: string;
 };
+
+
+type Option = {
+  value: string;
+  label?: string;
+  data?: any;
+}
+
+export type CustomSelectProps = {
+  label?: string;
+  width?: string;
+  name: string;
+  id?: string;
+  defaultValue?: string;
+  value?: string;
+  placeholderText: string;
+  options: Option[];
+  setFormValue?: (values: any) => void;
+  disabled?: boolean;
+  loading?: boolean;
+  open?: boolean;
+  defaultOpen?: boolean;
+  labelFontSize?: string;
+}
