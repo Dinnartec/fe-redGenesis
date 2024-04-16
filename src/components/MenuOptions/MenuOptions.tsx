@@ -1,7 +1,10 @@
-import { urlImageCLoud } from "@/src/utils/utilsText";
-import { EventCallbacks } from "next-auth";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
+
+import FolderNameManager from "@/src/modules/FolderNameManager";
+import CustomModal from "../CustomModal";
+import { urlImageCLoud } from "@/src/utils/utilsText";
+
 
 const MenuOptions = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -10,12 +13,19 @@ const MenuOptions = () => {
     setIsOpen(!isOpen);
   };
 
+  const createFolder = useRef();
+
+  const toggleCreateFolder = () => {
+    (createFolder.current as any).toggle();
+  };
+
   const dataOptions = [
     {
       id: 1,
       name: "Crear una carpeta",
       onClickFunction: () => {
-        console.log("Crear una carpeta");
+        toggleCreateFolder();
+        setIsOpen(!isOpen);
       },
       icon: `${urlImageCLoud}/icons/iconAddFolder.svg`,
       widthImage: 30,
@@ -45,14 +55,18 @@ const MenuOptions = () => {
       {isOpen && (
         <ul className="flex flex-col absolute w-60 h-52 bottom-[4.5rem] justify-between">
           {dataOptions.map((item) => {
-
             return (
               <li
                 key={item.id}
-                className="bg-grayLight rounded-xl shadow-custom-tooltip flex items-center justify-center gap-4 w-full h-16"
+                className="bg-grayLight rounded-xl shadow-custom-tooltip flex items-center justify-center gap-4 w-full h-16 cursor-pointer"
                 onClick={item.onClickFunction}
               >
-                <Image src={item.icon} alt={item.name} width={item.widthImage} height={24} />
+                <Image
+                  src={item.icon}
+                  alt={item.name}
+                  width={item.widthImage}
+                  height={24}
+                />
                 <p className="text-sm font-medium">{item.name}</p>
               </li>
             );
@@ -74,6 +88,10 @@ const MenuOptions = () => {
           }}
         />
       </button>
+
+      <CustomModal customRef={createFolder} closeOnEscape={false}>
+        <FolderNameManager onClose={toggleCreateFolder} />
+      </CustomModal>
     </div>
   );
 };

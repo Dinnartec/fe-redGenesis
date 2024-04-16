@@ -80,3 +80,10 @@ export type CustomSelectProps = {
   defaultOpen?: boolean;
   labelFontSize?: string;
 }
+
+export type CustomModalProps = {
+  customRef: React.MutableRefObject<any> | React.RefObject<any> | null | (() => void);
+  children: React.ReactNode;
+  closeOnDocumentClick?: boolean;
+  closeOnEscape?: boolean;
+};
