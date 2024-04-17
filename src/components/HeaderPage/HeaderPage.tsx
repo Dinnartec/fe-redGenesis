@@ -16,7 +16,7 @@ const HeaderPage = ({ titleHeader, breadcrumb }: HeaderPageProps) => {
   });
 
   return (
-    <div className="flex flex-row w-full h-auto justify-between items-center">
+    <header className="flex flex-row w-full h-auto justify-between items-center">
       <div className="flex flex-col">
         {
           breadcrumb && (
@@ -31,7 +31,7 @@ const HeaderPage = ({ titleHeader, breadcrumb }: HeaderPageProps) => {
         </p>
         <p className="text-sm font-normal text-gray">{formatDate}</p>
       </div>
-    </div>
+    </header>
   );
 };
 
