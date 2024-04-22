@@ -37,6 +37,7 @@ const Auth = ({ children }: AuthProps) => {
           alt="login"
           className="object-contain"
           style={{ objectFit: "contain" }}
+          priority
         />
       </section>
       <section className="w-2/5 flex flex-col justify-center items-center">
