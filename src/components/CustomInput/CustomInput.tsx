@@ -41,7 +41,7 @@ const CustomInput = ({
   };
 
   return (
-    <div>
+    <div className={`${width ? width : "w-full"}`}>
       {label && (
         <p
           className={`text-[${labelFontSize}] text-left font-medium pb-2 flex gap-2 items-center`}

@@ -4,24 +4,28 @@ import { MenuItem, Select } from "@mui/material";
 
 interface ContainerProps {
   width?: string;
+  height?: string;
 }
 
 export const Container = styled.div<ContainerProps>`
-  ${({ width }) => css`
+  ${({ width, height }) => css`
     width: ${width ? width : "100%"};
+    height: ${height ? height : "auto"};
   `}
 `;
 
 interface StyledSelectProps {
   width?: string;
+  disabled?: boolean;
+  height?: string;
 }
 
 export const StyledSelect = styled(Select)<StyledSelectProps>`
-  height: 34px;
-  ${({ disabled, width }) => css`
+  ${({ disabled, width, height }) => css`
     border: ${disabled ? "none" : "1px solid #000"};
     background: ${disabled ? "#F2F2F2" : ""};
     width: ${width || "100%"};
+    height: 40px;
   `}
   border-radius: 6px;
   font-size: 12px;

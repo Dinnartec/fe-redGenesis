@@ -185,3 +185,66 @@ export const dataDummy = [
     date_update: "2021-01-24",
   },
 ];
+
+export const semesterLocation = [
+  {
+    id: 1,
+    value: "1er",
+    label: "Primer semestre",
+    code: "1er semestre",
+  },
+  {
+    id: 2,
+    value: "2do",
+    label: "Segundo semestre",
+    code: "2do semestre"
+  },
+  {
+    id: 3,
+    value: "3er",
+    label: "Tercer semestre",
+    code: "3er semestre"
+  },
+  {
+    id: 4,
+    value: "4to",
+    label: "Cuarto semestre",
+    code: "4to semestre"
+  },
+  {
+    id: 5,
+    value: "5to",
+    label: "Quinto semestre",
+    code: "5to semestre"
+  },
+  {
+    id: 6,
+    value: "6to",
+    label: "Sexto semestre",
+    code: "6to semestre"
+  },
+  {
+    id: 7,
+    value: "7mo",
+    label: "Septimo semestre",
+    code: "7mo semestre"
+  },
+  {
+    id: 8,
+    value: "8vo",
+    label: "Octavo semestre",
+    code: "8vo semestre"
+  },
+  {
+    id: 9,
+    value: "9no",
+    label: "Noveno semestre",
+    code: "9no semestre"
+  },
+  {
+    id: 10,
+    value: "10mo",
+    label: "Decimo semestre",
+    code: "10mo semestre"
+  },
+];

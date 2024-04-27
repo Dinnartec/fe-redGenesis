@@ -1,5 +1,6 @@
 import { LoginUser } from "@/interface/objetcs.interface";
 import { UserLogin } from "@/interface/slices.interface";
+import { setUserInfo } from "@/slices/userInfoSlice";
 import { setUserState } from "@/slices/userSlice";
 import CustomButton from "@/src/components/CustomButton/CustomButton";
 import CustomInput from "@/src/components/CustomInput";
@@ -46,7 +47,14 @@ const Login = () => {
           setIsLoading(false);
           setIsError(false);
           router.push("/myDocuments");
+          const userInfo = userSession.user as UserLogin;
+          const dataInfo = {
+            uid: userInfo.uid,
+            names: userInfo.name,
+            email: userInfo.email,
+          }
           distpatch(setUserState(userSession.user as UserLogin));
+          distpatch(setUserInfo(dataInfo));
         }
       }
     } else {
