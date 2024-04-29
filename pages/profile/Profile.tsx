@@ -18,7 +18,7 @@ const Profile = () => {
   return (
     <Home>
       <h1 className="text-4xl font-bold text-secondary ">Mi cuenta</h1>
-      <section className="w-full flex  gap-14">
+      <section className="w-full flex gap-14 justify-center items-center">
         <section className="flex flex-col bg-[#FCFCF] gap-10 pt-16 px-4 pb-12 shadow-custom-tooltip rounded-md min-w-[360px] h-auto items-center">
           <div className="flex flex-col gap-6">
             <Image
@@ -61,7 +61,7 @@ const Profile = () => {
             className="w-44 h-11 rounded-md bg-secondary text-white font-semibold text-sm"
           />
         </section>
-        <section className="flex flex-col bg-[#FCFCF] gap-10 pt-4 px-4 pb-12 shadow-custom-tooltip rounded-md w-full h-auto items-center">
+        <section className="flex flex-col bg-[#FCFCF] gap-10 pt-4 px-4 pb-12 shadow-custom-tooltip rounded-md w-[695px] max-2xl:w-full h-auto items-center">
           <SettingsUser/>
         </section>
       </section>

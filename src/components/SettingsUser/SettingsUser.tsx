@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CustomTabPanel from "../CustomTabPanel/CustomTabPanel";
 import CustomTabHeader from "../CustomTabHeader/CustomTabHeader";
 import UpdateInfoUser from "@/src/modules/SettingsUser/UpdateInfoUser/UpdateInfoUser";
+import UpdateCredentialsUser from "@/src/modules/SettingsUser/UpdateCredentialsUser";
 
 const SettingsUser = () => {
   const [valueSteps, setValueSteps] = useState<number>(0);
@@ -27,7 +28,7 @@ const SettingsUser = () => {
         <UpdateInfoUser/>
       </CustomTabPanel>
       <CustomTabPanel value={valueSteps} index={1}>
-        Item Two
+        <UpdateCredentialsUser/>
       </CustomTabPanel>
       <CustomTabPanel value={valueSteps} index={2}>
         Item Three

@@ -57,6 +57,8 @@ const UpdateInfoUser = () => {
     dispatch(updateUserInfo(fieldsToUpdate));
   };
 
+  const isDisabled = Object.values(inputs).some((value) => value === "");
+
   return (
     <div className="flex flex-col justify-between h-full">
       <div className="flex flex-col gap-6">
@@ -149,7 +151,8 @@ const UpdateInfoUser = () => {
         <CustomButton
           label="Guardar cambios"
           onClick={submmitUpdate}
-          className="w-44 h-11 rounded-md bg-secondary text-white font-semibold text-sm self-end"
+          className="w-44 h-11 rounded-md bg-secondary text-white font-semibold text-sm self-end disabled:bg-gray disabled:cursor-not-allowed "
+          disabled={isDisabled}
         />
       </footer>
     </div>

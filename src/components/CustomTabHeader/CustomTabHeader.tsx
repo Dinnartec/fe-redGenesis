@@ -21,24 +21,29 @@ const CustomTabHeader = ({ valueSteps, onChange, dataTabs }: Props) => {
   }
 
   return (
-    <header className="w-full h-auto border-b-[1px] border-grayLight mb-8 ">
+    <header className="w-full h-auto border-b border-grayLight mb-8 ">
       <Tabs
         value={valueSteps}
         onChange={onChange}
         aria-label="basic tabs example"
       >
-        {dataTabs.map((tab: TabsLabelProps) => (
-          <Tab
-            key={tab.index}
-            label={tab.label}
-            {...a11yProps(tab.index)}
-            sx={{
-              fontSize: "16px",
-              textTransform: "capitalize",
-              fontWeight: "600",
-            }}
-          />
-        ))}
+        {dataTabs.map((tab: TabsLabelProps) => {
+          const isLastTab = tab.index === dataTabs.length - 1;
+          
+          return (
+            <Tab
+              key={tab.index}
+              label={tab.label}
+              {...a11yProps(tab.index)}
+              sx={{
+                fontSize: "16px",
+                textTransform: "capitalize",
+                fontWeight: "600",
+              }}
+              disabled={isLastTab}
+            />
+          );
+        })}
       </Tabs>
     </header>
   );
