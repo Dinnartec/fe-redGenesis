@@ -5,6 +5,7 @@ import FolderNameManager from "@/src/modules/FolderNameManager";
 import CustomModal from "../CustomModal";
 import { urlImageCLoud } from "@/src/utils/utilsText";
 import UploadDocument from "@/src/modules/UploadDocument";
+import GenerateTest from "@/src/modules/GenerateTest/GenerateTest";
 
 
 const MenuOptions = () => {
@@ -16,6 +17,11 @@ const MenuOptions = () => {
 
   const createFolder = useRef();
   const uploadDocument = useRef();
+  const generateTest = useRef();
+
+  const toggleGenerateTest = () => {
+    (generateTest.current as any).toggle();
+  }
 
   const toggleCreateFolder = () => {
     (createFolder.current as any).toggle();
@@ -50,7 +56,8 @@ const MenuOptions = () => {
       id: 3,
       name: "Generrar un examen",
       onClickFunction: () => {
-        console.log("Generrar un examen");
+        toggleGenerateTest();
+        setIsOpen(!isOpen);
       },
       icon: `${urlImageCLoud}/icons/iconGenerateTest.svg`,
       widthImage: 23,
@@ -101,6 +108,9 @@ const MenuOptions = () => {
       </CustomModal>
       <CustomModal customRef={uploadDocument} closeOnEscape={false}>
         <UploadDocument onClose={toggleUploadDocument}/>
+      </CustomModal>
+      <CustomModal customRef={generateTest} closeOnEscape={false}>
+        <GenerateTest onClose={toggleGenerateTest}/>
       </CustomModal>
     </div>
   );

@@ -27,7 +27,7 @@ export type CustomInputProps = {
   ) => void;
   min?: number;
   id?: string;
-  value?: string;
+  value?: string | number;
   isRequeried?: boolean;
   labelFontSize?: string;
   infoTooltip?: boolean;
