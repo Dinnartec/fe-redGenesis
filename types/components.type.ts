@@ -1,3 +1,4 @@
+import { documentState } from "@/interface/objetcs.interface";
 import { ChangeEvent } from "react";
 
 export type CustomButtonProps = {
@@ -87,3 +88,21 @@ export type CustomModalProps = {
   closeOnDocumentClick?: boolean;
   closeOnEscape?: boolean;
 };
+
+interface AcceptedFiles {
+  extensions: string[];
+  type: string;
+}
+
+
+export type FileUploaderProps = {
+  setInputs: React.Dispatch<React.SetStateAction<documentState>>;
+  acceptedFiles: AcceptedFiles
+  name: string;
+  value: File | File[] | null | string;
+  width?: string;
+  label?: string;
+  titleAcceptFile?: string;
+  height?: string;
+  imageDisplay?: string;
+}

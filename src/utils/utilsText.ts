@@ -35,3 +35,10 @@ export const testStatus = [
   },
 
 ];
+
+
+export const borderStyles = {
+  default: '2px dashed #9E9E9E',
+  correct: '2px dashed #2C98A0',
+  incorrect: '2px dashed #EB5757'
+};

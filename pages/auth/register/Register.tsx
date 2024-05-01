@@ -31,7 +31,6 @@ const Register = () => {
     event.preventDefault();
     setIsLoading(true);
     setIsError(false);
-    console.log("Registrando usuario...", inputs);
     try {
       // const response = await fetch("http://localhost:3000/api/auth/register", {
       //   method: "POST",
@@ -41,7 +40,6 @@ const Register = () => {
       //   body: JSON.stringify(inputs),
       // });
       if (true) {
-        console.log("Usuario registrado correctamente");
         router.push("/auth/otp");
       } else {
         setIsError(true);

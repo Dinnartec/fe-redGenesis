@@ -51,10 +51,8 @@ const OTPValidator = () => {
     if (otp.length === 6) {
       if (otp === "123456") {
         setIsInvalid(false);
-        console.log("Código correcto");
       } else {
         setIsInvalid(true);
-        console.log("Código incorrecto");
       }
     }
   }, [otp]);

@@ -192,7 +192,6 @@ const DataFolderSearch = () => {
     },
   ];
 
-  console.log("inputs", inputs)
 
   return (
     <section className="w-full h-full flex flex-col">
@@ -245,7 +244,7 @@ const DataFolderSearch = () => {
                       width={20}
                       height={20}
                       alt="search"
-                      className="mr-4"
+                      className="mr-4 w-5 h-5"
                     />
                     <p className="text-xs font-semibold">{item.file_name}</p>
                   </div>

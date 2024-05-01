@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import FolderNameManager from "@/src/modules/FolderNameManager";
 import CustomModal from "../CustomModal";
 import { urlImageCLoud } from "@/src/utils/utilsText";
+import UploadDocument from "@/src/modules/UploadDocument";
 
 
 const MenuOptions = () => {
@@ -14,10 +15,15 @@ const MenuOptions = () => {
   };
 
   const createFolder = useRef();
+  const uploadDocument = useRef();
 
   const toggleCreateFolder = () => {
     (createFolder.current as any).toggle();
   };
+
+  const toggleUploadDocument = () => {
+    (uploadDocument.current as any).toggle();
+  }
 
   const dataOptions = [
     {
@@ -34,7 +40,8 @@ const MenuOptions = () => {
       id: 2,
       name: "Subir un documento",
       onClickFunction: () => {
-        console.log("Subir un documento");
+        toggleUploadDocument();
+        setIsOpen(!isOpen);
       },
       icon: `${urlImageCLoud}/icons/iconAddFile.svg`,
       widthImage: 18,
@@ -91,6 +98,9 @@ const MenuOptions = () => {
 
       <CustomModal customRef={createFolder} closeOnEscape={false}>
         <FolderNameManager onClose={toggleCreateFolder} />
+      </CustomModal>
+      <CustomModal customRef={uploadDocument} closeOnEscape={false}>
+        <UploadDocument onClose={toggleUploadDocument}/>
       </CustomModal>
     </div>
   );
