@@ -17,12 +17,14 @@ function CustomSelect({
   open,
   defaultOpen,
   labelFontSize = "14px",
+  height,
+  placeholderColor="text-black"
 }: CustomSelectProps) {
   return (
-    <Container width={width} className="selectField">
+    <Container width={width} height={height} className="selectField">
       {label && (
         <p
-          className={`font-mont text-[${labelFontSize}] text-left font-medium text-redq pb-1`}
+          className={`font-mont text-[${labelFontSize}] text-left font-medium text-redq pb-2`}
         >
           {label}
         </p>
@@ -49,7 +51,7 @@ function CustomSelect({
         defaultOpen={defaultOpen}
       >
         <StyledMenuItem disabled value="">
-          <p className="text-black">
+          <p className={`${placeholderColor}`}>
             {loading ? "Cargando..." : placeholderText}
           </p>
         </StyledMenuItem>

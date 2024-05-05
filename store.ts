@@ -3,6 +3,7 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import userReducer from "@/slices/userSlice";
+import userInfoReducer from "@/slices/userInfoSlice";
 
 // Este bloque de código configura las opciones de persistencia para redux-persist.
 const persistConfig = {
@@ -13,7 +14,8 @@ const persistConfig = {
 
 // Esta línea crea un reductor raíz combinando varios reductores en uno solo.
 const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  userInfo: userInfoReducer,
 });
 
 

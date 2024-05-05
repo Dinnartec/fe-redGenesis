@@ -8,7 +8,7 @@ const Home = ({ children }: { children: React.ReactNode }) => {
     <ThemeProvider theme={redGenesisTheme}>
       <div className="flex flex-row h-screen w-screen">
         <SideMenu />
-        <main className="flex flex-col pr-20 pt-20 pl-16 pb-20 w-screen h-screen justify-between">
+        <main className="flex flex-col pr-20 pt-20 pl-16 pb-20 w-screen h-screen justify-between ">
           {children}
         </main>
       </div>

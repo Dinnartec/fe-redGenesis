@@ -5,16 +5,18 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuActions from "../MenuActions/MenuActions";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const FooterUserProfile = () => {
 
+  const router = useRouter();
 
   const optionsListData = [
     {
       id: 1,
       name: "Perfil de usuario",
       icon: <AccountCircleIcon />,
-      handlerOption: () => console.log("Perfil de usuario"),
+      handlerOption: () => router.push("/profile"),
     },
     {
       id: 2,

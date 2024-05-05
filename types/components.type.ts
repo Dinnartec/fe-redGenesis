@@ -80,6 +80,8 @@ export type CustomSelectProps = {
   open?: boolean;
   defaultOpen?: boolean;
   labelFontSize?: string;
+  height?: string;
+  placeholderColor?: string;
 }
 
 export type CustomModalProps = {
@@ -105,4 +107,10 @@ export type FileUploaderProps = {
   titleAcceptFile?: string;
   height?: string;
   imageDisplay?: string;
+}
+
+export type TabPanelProps ={
+  children?: React.ReactNode;
+  index: number;
+  value: number;
 }
