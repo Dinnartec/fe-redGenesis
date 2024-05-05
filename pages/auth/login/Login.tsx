@@ -51,7 +51,7 @@ const Login = () => {
           const dataInfo = {
             uid: userInfo.uid,
             names: userInfo.name,
-            email: userInfo.email,
+            email: userInfo.email || "",
           }
           distpatch(setUserState(userSession.user as UserLogin));
           distpatch(setUserInfo(dataInfo));
