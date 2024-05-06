@@ -99,10 +99,15 @@ const FileUploader = ({
               </div>
             </div>
           ) : (
-            <div className="flex flex-row w-full justify-between cursor-pointer">
-              <p className="text-xs text-[#888888] leading-[1rem] font-medium text-center max-w-[180px]">
-                Arrastra o haz clic aquí para adjuntar un archivo.
-              </p>
+            <div className="flex justify-center items-center w-full gap-14 cursor-pointer">
+              <Image
+                src={`${urlImageCLoud}/icons/iconUpload.svg`}
+                alt="File Upload"
+                width={80}
+                height={80}
+                className=""
+              />
+              <p className="text-lg text-[#454545] font-medium">Haz clic o arrastra tu archivo pdf</p>
             </div>
           )}
         </FileContainer>

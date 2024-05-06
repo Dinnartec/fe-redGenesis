@@ -17,10 +17,10 @@ export interface UserInformation {
   names: string;
   surname?: string;
   email: string;
-  carrerUniversity?: string;
+  universityCareer?: string;
   semester?: semester;
   city?: string;
   postalCode?: string;
-  deparment?: string;
+  department?: string;
   phone?: string;
 }

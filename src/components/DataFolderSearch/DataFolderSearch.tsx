@@ -78,7 +78,7 @@ const DataFolderSearch = () => {
             <DatePicker
               selected={startDate}
               onChange={(date: Date) => setStartDate(date)}
-              className="w-28 h-8 rounded-md border border-black px-2 py-1"
+              className="w-28 h-10 rounded-md border border-black px-2 py-1"
             />
             <CustomSelect
               name="typeTest"

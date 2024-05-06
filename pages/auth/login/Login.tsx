@@ -10,6 +10,7 @@ import { getSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { ChangeEvent, MouseEvent, useState } from "react";
 
+
 const Login = () => {
   const [inputs, setInputs] = useState<LoginUser>({
     email: "",
@@ -49,7 +50,7 @@ const Login = () => {
           router.push("/myDocuments");
           const userInfo = userSession.user as UserLogin;
           const dataInfo = {
-            uid: userInfo.uid,
+            uid: userInfo.uid || "",
             names: userInfo.name,
             email: userInfo.email || "",
           }
