@@ -77,6 +77,7 @@ const GenerateTest = ({ onClose }: generateTestProps) => {
             id="numberQuestions"
             value={quantityQuestions || ''}
             onChange={handleChange}
+            width="w-10"
           />
           <CustomButton
             className="w-auto h-auto text-secondary text-3xl disabled:text-gray disabled:cursor-not-allowed"

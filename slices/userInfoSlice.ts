@@ -7,11 +7,11 @@ const initialState: UserInformation = {
   names: "",
   surname: "",
   email: "",
-  carrerUniversity: "",
-  semester: { code: "", label: "", value: "", id: 0 },
+  universityCareer: "",
+  semester: undefined,
   city: "",
   postalCode: "",
-  deparment: "",
+  department: "",
   phone: "",
 };
 
@@ -22,7 +22,7 @@ const userInfoSlice = createSlice({
   initialState,
   reducers: {
     setUserInfo: (state, action: PayloadAction<UserInformation>) => {
-      return action.payload;
+      return {...state, ...action.payload};
     },
     updateUserInfo: (state, action: PayloadAction<UpdateUserPayload>) => {
       return { ...state, ...action.payload };

@@ -11,7 +11,7 @@ const UpdateInfoUser = () => {
   const [inputs, setInputs] = useState({
     names: "",
     surname: "",
-    career: "",
+    universityCareer: "",
     semester: { code: "", label: "", value: "", id: 0 },
     phone: "",
     department: "",
@@ -32,19 +32,20 @@ const UpdateInfoUser = () => {
 
   const submmitUpdate = () => {
     const updatedFields = {
-      names: inputs.names || "",
-      surname: inputs.surname || "",
-      career: inputs.career || "",
-      semester: inputs.semester || { code: "", label: "", value: "", id: 0 },
-      phone: inputs.phone || "",
-      department: inputs.department || "",
-      postalCode: inputs.postalCode || "",
-      city: inputs.city || "",
+      ...userInfo,
+      names: inputs.names || userInfo.names,
+      surname: inputs.surname || userInfo.surname,
+      universityCareer: inputs.universityCareer || userInfo.universityCareer,
+      semester: inputs.semester !== undefined ? inputs.semester : userInfo.semester,
+      phone: inputs.phone || userInfo.phone,
+      department: inputs.department || userInfo.department,
+      postalCode: inputs.postalCode || userInfo.postalCode,
+      city: inputs.city || userInfo.city,
     };
   
     const fieldsToUpdate = Object.entries(updatedFields).reduce(
       (acc: { [key: string]: any }, [key, value]) => {
-        if (value) {
+        if (value !== undefined && value !== userInfo[key as keyof typeof userInfo]) {
           acc[key] = value;
         }
         return acc;
@@ -53,11 +54,8 @@ const UpdateInfoUser = () => {
     );
   
     console.log("Actualizar datos", fieldsToUpdate);
-    // Despachar la acción updateUserInfo con los campos a actualizar
     dispatch(updateUserInfo(fieldsToUpdate));
   };
-
-  const isDisabled = Object.values(inputs).some((value) => value === "");
 
   return (
     <div className="flex flex-col justify-between h-full">
@@ -69,7 +67,7 @@ const UpdateInfoUser = () => {
             type="text"
             className="w-full h-10 p-2 rounded-md border brode-gray"
             name="names"
-            value={inputs.names || userInfo.names}
+            defaultValue={userInfo.names}
             onChange={handleChangeInput}
           />
           <CustomInput
@@ -78,7 +76,7 @@ const UpdateInfoUser = () => {
             type="text"
             className="w-full h-10 p-2 rounded-md border brode-gray"
             name="surname"
-            value={inputs.surname || userInfo.surname}
+            defaultValue={userInfo.surname}
             onChange={handleChangeInput}
           />
         </div>
@@ -88,20 +86,19 @@ const UpdateInfoUser = () => {
             placeholder="Ingenieria de sistemas"
             type="text"
             className="w-full h-10 p-2 rounded-md border brode-gray"
-            name="career"
-            value={inputs.career || userInfo.carrerUniversity}
+            name="universityCareer"
+            defaultValue={userInfo.universityCareer}
             onChange={handleChangeInput}
           />
           <CustomSelect
             label="Ubicación semestral"
             placeholderText="Seleccione la ubicación semestral"
             name="semester"
-            value={inputs.semester.value || userInfo?.semester?.value}
-            options={
-              transformForSelect(semesterLocation || [], "label", "value") || [
-                userInfo?.semester,
-              ]
+            value={
+              inputs.semester.value ||
+              (userInfo.semester && userInfo.semester.value)
             }
+            options={transformForSelect(semesterLocation || [], "label", "value")}
             setFormValue={setInputs}
             placeholderColor="text-gray"
           />
@@ -109,11 +106,11 @@ const UpdateInfoUser = () => {
         <div className="flex gap-8 w-full justify-between">
           <CustomInput
             label="Telefono"
-            placeholder="Ingenieria de sistemas"
+            placeholder="3104461088"
             type="text"
             className="w-full h-10 p-2 rounded-md border brode-gray"
             name="phone"
-            value={inputs.phone || userInfo?.phone}
+            defaultValue={userInfo.phone}
             onChange={handleChangeInput}
           />
           <CustomInput
@@ -122,7 +119,7 @@ const UpdateInfoUser = () => {
             type="text"
             className="w-full h-10 p-2 rounded-md border brode-gray"
             name="department"
-            value={inputs.department || userInfo?.deparment}
+            defaultValue={userInfo.department}
             onChange={handleChangeInput}
           />
         </div>
@@ -133,7 +130,7 @@ const UpdateInfoUser = () => {
             type="number"
             className="w-full h-10 p-2 rounded-md border brode-gray"
             name="postalCode"
-            value={inputs.postalCode || userInfo?.postalCode}
+            defaultValue={userInfo.postalCode}
             onChange={handleChangeInput}
           />
           <CustomInput
@@ -142,7 +139,7 @@ const UpdateInfoUser = () => {
             type="text"
             className="w-full h-10 p-2 rounded-md border brode-gray"
             name="city"
-            value={inputs.city || userInfo?.city}
+            defaultValue={userInfo.city}
             onChange={handleChangeInput}
           />
         </div>
@@ -152,7 +149,7 @@ const UpdateInfoUser = () => {
           label="Guardar cambios"
           onClick={submmitUpdate}
           className="w-44 h-11 rounded-md bg-secondary text-white font-semibold text-sm self-end disabled:bg-gray disabled:cursor-not-allowed "
-          disabled={isDisabled}
+          // disabled={isDisabled}
         />
       </footer>
     </div>

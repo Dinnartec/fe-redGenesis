@@ -2,7 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { urlImageCLoud } from "@/src/utils/utilsText";
-import FooterUserProfile from "../FooterUserProfile";
+import LogoutIcon from "@mui/icons-material/Logout";
+
 
 const SideMenu = () => {
   const routes = useRouter();
@@ -25,6 +26,12 @@ const SideMenu = () => {
       name: "Borradores",
       url: "/drafts",
       icon: `${urlImageCLoud}/icons/iconDraft.svg`,
+    },
+    {
+      id: 4,
+      name: "Configuración",
+      url: "/profile",
+      icon: `${urlImageCLoud}/icons/iconSettings.svg`,
     },
   ];
 
@@ -58,7 +65,9 @@ const SideMenu = () => {
                       alt={item.name}
                       width={16}
                       height={16}
-                      style={{ filter: isEnabled ? "brightness(0) invert(1)" : "none" }}
+                      style={{
+                        filter: isEnabled ? "brightness(0) invert(1)" : "none",
+                      }}
                     />
                     <p
                       className={`text-sm font-semibold ${
@@ -75,7 +84,16 @@ const SideMenu = () => {
         </ul>
       </nav>
 
-      <FooterUserProfile />
+      <button
+        className="py-3 px-6 rounded-md flex items-center text- justify-center cursor-pointer hover:bg-secondary text-sm hover:text-white gap-2 mb-8" 
+      >
+        <LogoutIcon sx={{
+          width: "16px",
+          height: "16px",
+        }}/>
+        <p className=" font-semibold">Cerrar sesion</p>
+      </button>
+
     </aside>
   );
 };

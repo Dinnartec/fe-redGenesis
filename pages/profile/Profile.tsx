@@ -12,15 +12,19 @@ import React from "react";
 const Profile = () => {
   const user = useAppSelector(selectUser);
   const userInfo = useAppSelector(selectUserInfo);
-  console.log(user);
-  console.log("userInfo", userInfo)
+
+  var nombreSeparado = userInfo.names.split(" ");
+  var primerNombre = nombreSeparado[0];
+  var apellidoSeparado = userInfo?.surname?.split(" ") ?? [];
+  var primerApellido = apellidoSeparado[0];
+  const name = `${primerNombre} ${primerApellido}`;
 
   return (
     <Home>
       <h1 className="text-4xl font-bold text-secondary ">Mi cuenta</h1>
       <section className="w-full flex gap-14 justify-center items-center">
         <section className="flex flex-col bg-[#FCFCF] gap-10 pt-16 px-4 pb-12 shadow-custom-tooltip rounded-md min-w-[360px] h-auto items-center">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 w-full items-center">
             <Image
               src={`${urlImageCLoud}/images/userProfile.svg`}
               alt="logo"
@@ -28,7 +32,7 @@ const Profile = () => {
               height={206}
               className="rounded-lg"
             />
-            <h2 className="text-4xl font-bold text-center ">{user.name}</h2>
+            <h2 className="text-4xl font-bold text-center ">{name}</h2>
             <Chip
               label="Universidad de Pamplona"
               style={{
@@ -44,15 +48,15 @@ const Profile = () => {
           <div className="flex flex-col gap-4 w-full">
             <div className="flex justify-between items-center">
               <p className="text-sm font-medium ">Correo electronico</p>
-              <p className=" text-sm font-medium ">{user.email}</p>
+              <p className=" text-sm font-medium ">{userInfo.email}</p>
             </div>
             <div className="flex justify-between items-center">
               <p className="text-sm font-medium ">Carrera universitaria</p>
-              <p className=" text-sm font-medium ">Ingenieria de sistemas</p>
+              <p className=" text-sm font-medium ">{userInfo.universityCareer}</p>
             </div>
             <div className="flex justify-between items-center">
               <p className="text-sm font-medium ">Semestre</p>
-              <p className=" text-sm font-medium ">8vo</p>
+              <p className=" text-sm font-medium ">{userInfo.semester?.code}</p>
             </div>
           </div>
           <CustomButton
